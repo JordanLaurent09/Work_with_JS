@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+
+            position: relative;
+
+            background-color: rgb(61, 209, 110);
+            /*animation: slide 2s infinite alternate;*/
+            /*transition: all ease 2s;*/
+
+            
+        }
+
+        /* @keyframes slide {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(100px);
+            }
+        } */
+
+        /* .box:hover {
+            transform: scale(1.5);
+        } */
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+
+    <script>
+        let box = document.querySelector('.box');
+        let position = 0;
+
+        // Высокоуровневый уровень
+        function frame() {
+            if (position >= 350) {
+                return;
+            }
+            else {
+                position++;
+                box.style.left = position + 'px';
+                requestAnimationFrame(frame);
+            }
+        }
+
+        requestAnimationFrame(frame);
+
+        // Способ, где нужно задавать все самим
+        /* setTimeout(() => {
+            let interval = setInterval(frame, 10);
+        }, 1000)
+
+        function frame() {
+            if (position >= 350) {
+                clearInterval(interval);
+            }
+            else {
+                position++;
+                box.style.left = position + 'px';
+            }
+        } */
+
+    </script>
+</body>
+</html>
