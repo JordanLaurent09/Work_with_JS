@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    
+    <form class="form">
+        <div class="data_container">
+            <h2 for="">Регистрация пользователя</h2l>
+        </div>
+        
+        <div class="form__titled-line">
+            <h3>Данные пользователя</h3>
+            <div class="form__data_line">            
+                <div class="data_container">
+                    <label for="name">Имя:</label>
+                    <input id="user_name" type="text" name="user_name" required>
+                </div>
+        
+                <div class="data_container">
+                    <label for="username">Логин:</label>
+                    <input id="user_login" type="text" name="user_login" required>
+                </div>
+        
+                <div class="data_container">
+                    <label for="email">Почта:</label>
+                    <input id="user_mail" type="email" name="user_mail" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form__titled-line">
+            <h3>Адрес</h3>
+            <div class="form__data_line">            
+                <div class="data_container">
+                    <label for="street">Улица:</label>
+                    <input id="user_street" type="text" name="user_street" required>
+                </div>
+        
+                <div class="data_container">
+                    <label for="suite">Апартаменты:</label>
+                    <input id="user_apartments" type="text" name="user_apartments" required>
+                </div>
+        
+                <div class="data_container">
+                    <label for="city">Город:</label>
+                    <input id="user_city" type="text" name="user_city" required>
+                </div>
+
+                <div class="data_container">
+                    <label for="zipcode">Почтовый индекс:</label>
+                    <input id="user_zipcode" type="text" name="user_zipcode" required>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form__titled-line">
+            <h3>Геопозиция</h3>
+            <div class="form__data_line">            
+                <div class="data_container">
+                    <label for="lat">Широта:</label>
+                    <input id="user_lattitude" type="text" name="user_lattitude" required>
+                </div>
+        
+                <div class="data_container">
+                    <label for="lng">Долгота:</label>
+                    <input id="user_longitude" type="text" name="user_longitude" required>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form__titled-line">
+            <h3>Контакты:</h3>
+            <div class="form__data_line">            
+                <div class="data_container">
+                    <label for="phone">Номер телефона</label>
+                    <input id="user_phone" type="tel"  name="user_phone" required>
+                </div>
+        
+                <div class="data_container">
+                    <label for="website">Сайт:</label>
+                    <input id="user_site" type="text" name="user_site" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form__titled-line">
+            <h3>Место работы:</h3>
+            <div class="form__data_line">            
+                <div class="data_container">
+                    <label for="company">Название компании:</label>
+                    <input id="user_company" type="text" name="user_company" required>
+                </div>
+        
+            </div>
+        </div>
+
+        <br>
+
+        <div class="data_container_key">
+            <label for="catchPhrase">Ключевая фраза:</label>
+            <input id="user_phrase" type="text" name="user_phrase" required>
+        </div>
+
+        <br>
+
+        <div class="data_container_key">
+            <label for="bs">BS:</label>
+            <input id="user_bs" type="text" name="user_bs" required>
+        </div>
+
+        <button id="submitButton" class="button_submit" type="submit">Зарегистрироваться</button>
+        
+    </form>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let submitButton = document.getElementById('submitButton');
+        
+
+        // Событие по добавлению в FormData содержимого инпутов и по дальнейшей отправке данных на сервер
+        submitButton.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            let data = new FormData();
+
+            let name = document.getElementById('user_name').value;
+            let username = document.getElementById('user_login').value;
+            let mail = document.getElementById('user_mail').value;
+
+            let street = document.getElementById('user_street').value;
+            let suite = document.getElementById('user_apartments').value;
+            let city = document.getElementById('user_city').value;
+            let zip = document.getElementById('user_zipcode').value;
+
+
+            let lattitude = document.getElementById('user_lattitude').value;
+            let longitude = document.getElementById('user_longitude').value;
+
+            let phone = document.getElementById('user_phone').value;
+            let site = document.getElementById('user_site').value;
+
+            let companyName = document.getElementById('user_company').value;
+            let phrase = document.getElementById('user_phrase').value;
+            let bs = document.getElementById('user_bs').value;
+
+            data.append("name", name);
+            data.append("username", username);
+            data.append("email", mail);
+
+            data.append("address", JSON.stringify({
+                "street": street,
+                "suite": suite,
+                "city": city,
+                "zipcode": zip,
+                "geo": {
+                    "lat": lattitude,
+                    "lng": longitude
+                }
+            }));
+
+            data.append("phone", phone);
+            data.append("website", site);
+
+            data.append("company", JSON.stringify({
+                "name": companyName,
+                "catchPhrase": phrase,
+                "bs": bs
+            }));
+
+            fetch('https://jsonplaceholder.typicode.com/users', {
+                method: 'POST',
+                body: data
+            }).
+            then(response => 
+            {
+                if (!response.ok) {
+                    getNegativeResponse(new Error("Нет связи с сервером!! Досадно, граждане!"));
+                    return;
+                }
+                return response.json()
+            })
+            .then((dat) => {
+                console.log(dat);
+                getPositiveResponse(dat.id, data.get('name'))
+            }
+
+            )
+            .catch(error => 
+                getNegativeResponse(error)
+            );
+        });
+    }) 
+
+
+    // Функция по созданию сообщения об успешном POST
+    let getPositiveResponse = (userId, userName) => {
+        let container = document.createElement('div');
+
+        container.style.width = '200px';
+        container.style.height = '150px';
+
+        container.style.padding = '10px 20px 10px 20px';
+
+        container.style.position = 'absolute';
+
+        container.style.top = '0';
+        container.style.left = '200px';
+
+        container.style.backgroundColor = '#27a844';
+        container.style.color = 'white';
+
+        let message = document.createElement('p');
+        message.textContent = 'Регистрация прошла успешно:';
+
+        let id = document.createElement('h2');
+        id.textContent = `id: ${userId}`;
+
+        let user = document.createElement('h2');
+        user.textContent = `Имя: ${userName}`;
+
+        container.appendChild(message);
+        container.appendChild(id);
+        container.appendChild(user);
+
+        document.body.appendChild(container);
+    }
+
+    // Функция по созданию сообщения об ошибках при работе с сервером
+    let getNegativeResponse = (errorInfo) => {
+        let container = document.createElement('div');
+
+        container.style.width = '200px';
+        container.style.height = '150px';
+
+        container.style.padding = '10px 20px 10px 20px';
+
+        container.style.position = 'absolute';
+
+        container.style.top = '0';
+        container.style.left = '200px';
+
+        container.style.backgroundColor = '#dc3546';
+        container.style.color = 'white';
+
+        let message = document.createElement('p');
+        message.textContent = 'Возникла ошибка:';
+
+        let err = document.createElement('h2');
+        err.textContent = `${errorInfo}`;
+
+        container.appendChild(message);
+        container.appendChild(err);
+
+        document.body.appendChild(container);
+    }
+    </script>
+</body>
+</html>
