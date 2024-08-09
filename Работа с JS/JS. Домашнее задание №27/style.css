@@ -1,0 +1,43 @@
+*{
+    margin: 0;padding: 0;
+}
+
+.container{
+    width: 350px;
+
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: gray;
+    margin: 20px auto;
+    transition: background-color 0.5s;
+}
+
+.hide-box{
+    width: 500px;
+    height: 55px;
+
+    position: absolute;
+    transform: translate(-50%, 33%);
+    animation: left-moving ease 5s infinite;
+    left: 45%;
+    top: 0;
+
+    background-color: white;
+}
+
+@keyframes left-moving {
+    from {
+        left: 50%;
+    }
+    to {
+        left: 75%;
+    }
+}
