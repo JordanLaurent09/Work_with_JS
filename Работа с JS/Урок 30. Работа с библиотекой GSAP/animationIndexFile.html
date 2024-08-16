@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <!-- <button id="playBtn">Воспроизвести</button>
+    <button id="pauseBtn">Пауза</button>
+    <button id="reverseBtn">Выход</button>
+    <button id="restartBtn">Перезапуск</button> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script>
+        let tl = gsap.timeline();
+
+        tl.add("start")
+        .to('.box', {x: 100, duration: 2})
+        .to('.box', {rotation: 360, duration: 2}, "start+=1")
+        .to('.box', {y: 150, duration: 2}, "start+=0.5")
+
+
+        /* tl.to('.box', { x: 100, duration: 4})
+        .add(() => tl.to('.box', { y: 100, duration: 1}), '+=5') */
+
+    /* function animationEnded() {
+            console.log("Анимация завершена");
+        }
+
+        function animationUpdated() {
+            console.log("Анимация обновлена");
+        }
+
+        function animationStarted() {
+            console.log("Анимация начата");
+        }
+
+        function animationRepeated() {
+            console.log("Анимация повторена");
+        }
+
+        function animationReversingCompleted() {
+            console.log("Обратная анимация завершена");
+        }
+
+        let tl = gsap.timeline({
+            repeat: 3, 
+            yoyo: true,
+            defaults: { duration: 1, ease: 'power1.inOut'},
+            onComplete: animationEnded,
+            onUpdate: animationUpdated,
+            onStart: animationStarted,
+            onRepeat: animationRepeated,
+            onReverseComplete: animationReversingCompleted
+        });
+
+        tl.to('.box', {y: 100, backgroundColor: 'red'})
+        .to('.box', {rotation: 360});
+
+
+        document.getElementById('playBtn').addEventListener('click', () => tl.play());
+        document.getElementById('pauseBtn').addEventListener('click', () => tl.pause());
+        document.getElementById('reverseBtn').addEventListener('click', () => tl.reverse());
+        document.getElementById('restartBtn').addEventListener('click', () => tl.restart()); */
+
+
+
+
+
+
+
+
+        //gsap.to('.box', { duration: 5, x: 100, y: 100, opacity: 0.5})
+
+
+        //gsap.from('.box', {duration: 50, x: 200, y: 200, opacity: 0, rotation: 540000});
+
+
+        /* gsap.fromTo(
+            '.box',
+            {opacity: 0, rotation: 540},
+            {duration: 5, opacity: 1, rotation: 0}
+        ) */
+
+
+        // Если у repeat значение -1, то анимация будет бесконечной
+
+        /* document.addEventListener('DOMContentLoaded', () => {
+            let tl = gsap.timeline({repeat: 3, yoyo: true});
+
+            tl.to('.box', {duration: 1, x: 100})
+            .to('.box', {duration: 1, y: 100, backgroundColor: 'red'})
+            .to('.box', {duration: 1, rotation: 360})
+        }) */
+
+
+
+        
+
+
+
+
+        
+    </script>
+</body>
+</html>
