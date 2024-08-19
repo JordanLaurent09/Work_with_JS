@@ -47,7 +47,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script>
-        let tween = gsap.to('.obj', {systemOutPrintln, duration: 10, x: 1000, rotation: 360, backgroundColor: 'azure', ease: 'elastic'});
+        let tween = gsap.to('.obj', {systemOutPrintln, systemOutPrint, data: "My sweet sixteen", duration: 10, x: 1000, rotation: 360, backgroundColor: 'azure', ease: 'elastic'});
 
 
         function systemOutPrintln() {
@@ -65,6 +65,24 @@
 
             gsap.to('.adding_element', {duration: 5, x: 1500, y: 600, rotation: 720, backgroundColor: 'deepblue', ease: 'elastic'});
 
+
+        };
+
+        function systemOutPrint() {            
+            let element = document.createElement('div');
+
+            element.className = 'another_element';
+
+            element.textContent = tween.data;
+            
+            element.style.backgroundColor = 'green';
+            element.style.width = '300px';
+            element.style.height = '300px';
+            element.style.borderRadius = '100%';
+
+            document.body.appendChild(element);
+
+            gsap.to('.another_element', {duration: 5, x: 1200, y: 400, rotation: 1440, backgroundColor: 'darkblue', ease: 'elastic'});
 
         };
 
