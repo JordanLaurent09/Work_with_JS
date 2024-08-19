@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+
+            background-color: crimson;
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+
+            background-color: violet;
+        }
+
+        .obj {
+            width: 150px;
+            height: 150px;
+
+            border-radius: 100%;
+
+            background-color: yellowgreen;
+
+            content: url(/pics/x-letter.png);
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+
+    </div>
+    <div class="circle">
+
+    </div> -->
+
+    <div class="obj">
+    
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+        let tween = gsap.to('.obj', {systemOutPrintln, duration: 10, x: 1000, rotation: 360, backgroundColor: 'azure', ease: 'elastic'});
+
+
+        function systemOutPrintln() {
+            //console.log("Strange... what LOVE does...");
+            let element = document.createElement('div');
+
+            element.className = 'adding_element';
+
+            element.style.backgroundColor = 'pink';
+            element.style.width = '300px';
+            element.style.height = '300px';
+            element.style.borderRadius = '100%';
+
+            document.body.appendChild(element);
+
+            gsap.to('.adding_element', {duration: 5, x: 1500, y: 600, rotation: 720, backgroundColor: 'deepblue', ease: 'elastic'});
+
+
+        };
+
+        //gsap.to('.box', { duration: 2, x: 500, y: 500, opacity: 0.5, backgroundColor: 'blue'});
+        //gsap.from('.box', {duration: 10, x: 1500, y: 1000, opacity: 0.1, backgroundColor: 'deepblue', rotation: 540});
+        /*gsap.fromTo('.box', 
+        {x: 600, y: 600, backgroundColor: 'purple', opacity: 0.1, borderRadius: 100},
+        {duration: 10, x: 200, y: 900, backgroundColor: 'darkgreen', opacity: 1, borderRadius: 20});*/
+
+        /* let tl = gsap.timeline({repeat: -1, yoyo: true});
+
+        tl.to('.box', {duration: 1, x: 100, y: 100, opacity: 0.23})
+        .to('.box', {duration: 3, x: 400, y: 650, opacity: 1, backgroundColor: 'yellowgreen'})
+        .to('.circle', {duration: 6, x: 200, y: 100, opacity: 0.5, rotation: 720, backgroundColor: 'gray'}); */
+
+        
+    </script>
+</body>
+</html>
