@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circle {
+            width: 150px;
+            height: 150px;
+
+            background-color: darkgreen;
+
+            border-radius: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script>
+        let colors = ['pink', 'blue', 'crimson', 'black'];
+
+        let xCoord = Math.random() * 1700;
+        let yCoord = Math.random() * 900;
+
+        gsap.to('.circle', {startAt: {x: xCoord, y: yCoord}});
+
+        let button = document.querySelector('.circle');
+
+        button.addEventListener('click', () => {
+
+            changeLook();
+        });
+
+        function changeLook() {
+            xCoord = Math.random() * 1700;
+            yCoord = Math.random() * 900;
+            let colorIndex = Math.ceil(Math.random() * colors.length);
+            console.log(colorIndex);
+            gsap.to('.circle', {opacity: 0.5});
+            gsap.to('.circle', {duration: 4, x: xCoord, y: yCoord, backgroundColor : colors[colorIndex]});
+            gsap.to('.circle', {delay: 4, opacity: 1});
+            
+        } 
+
+        
+        
+    </script>
+</body>
+</html>
