@@ -1,0 +1,31 @@
+body{
+    overflow: hidden;
+}
+
+.wrapper{
+    position: absolute;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box{   
+    position: relative;
+}
+
+.circle{
+    width: 300px;
+    height: 300px;
+
+    position: absolute;
+    transform: translate(50%, 50%);
+
+    border-radius: 50%;
+
+    background-color: #ede3ab;
+    box-shadow: inset 0px 2px 10px;
+}
+
+.text {
+    color: #a52a2a;
+}
